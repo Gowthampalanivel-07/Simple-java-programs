@@ -1,0 +1,40 @@
+import java.util.Scanner;
+
+public class PrimeNumberChecker {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Input integer from user
+        System.out.print("Enter an integer: ");
+        int number = scanner.nextInt();
+
+        // Check if the number is prime
+        boolean isPrime = checkPrime(number);
+
+        // Output the result
+        if (isPrime) {
+            System.out.println(number + " is a prime number.");
+        } else {
+            System.out.println(number + " is not a prime number.");
+        }
+
+        scanner.close();
+    }
+
+    // Method to check if a number is prime
+    public static boolean checkPrime(int num) {
+        // Handle edge cases
+        if (num <= 1) {
+            return false;
+        }
+
+        // Check divisibility from 2 to the square root of num
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) {
+                return false; // If divisible by any number other than 1 and itself, it's not prime
+            }
+        }
+
+        return true; // If no divisors found, the number is prime
+    }
+}
